@@ -135,6 +135,7 @@ li {
     align-items: center;
     position: relative;
     height: max-content;
+
 }
 
 .item-overlay {
@@ -145,15 +146,16 @@ li {
     position: absolute;
     top: 0;
     left: 0;
-    background-color: #fca311;
+    background-color: #e5e5e5;
     height: 100%;
     width: 100%;
     transition: all 0.5s ease;
     opacity: 0;
+    color: #14213d;
 }
 
 .item-overlay h3 {
-    border-bottom: 2px solid #14213d;
+    border-bottom: 2px solid #fca311;
 }
 
 .item-overlay:hover {

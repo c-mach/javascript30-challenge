@@ -10,6 +10,27 @@ body,html {
   font-family: sans-serif;
 }
 
+nav {
+  margin-top: 2%;
+}
+
+nav a {
+  background-color: #ffc600;
+  font-size: 1.6rem;
+  color: white;
+  padding: 1%;
+  text-transform: uppercase;
+}
+
+nav a:hover {
+  background-color: black;
+  color: #ffc600;
+}
+
+nav i {
+  padding: 0 1%;
+}
+
 .keys {
   display: flex;
   flex: 1;
