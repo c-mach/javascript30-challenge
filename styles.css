@@ -37,7 +37,7 @@ html {
 }
 
 body {
-    font-size: 1.6rem;
+    font-size: calc(1.4rem + 0.25vw);
     font-family: sans-serif;
     letter-spacing: 1px;
     text-transform: uppercase;
@@ -83,7 +83,7 @@ a:hover::before {
 
 h1 {
     font-size: calc(1.8rem + 1vw);
-    padding: 0 2% 0 2%;
+    padding-right: 2%;
 }
 
 /* HEADER STYLES */
@@ -96,8 +96,20 @@ nav {
     align-items: baseline;
 }
 
-nav h1 {
+h1 {
     flex-shrink: 5;
+    position: relative;
+}
+
+h1::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    width: 96%;
+    height: 13px;
+    background: rgba(252, 162, 17, 0.588);
+    bottom: 0;
+    left: 0;
 }
 
 /* MAIN STYLES */
@@ -159,7 +171,7 @@ footer {
 }
 
 footer p {
-    margin: 2%;
+    margin: 1%;
 }
 
 footer span {
