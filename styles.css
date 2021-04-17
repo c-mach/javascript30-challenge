@@ -87,6 +87,11 @@ h1 {
     padding-right: 2%;
 }
 
+h2 {
+    font-size: calc(1.2rem + 1vw);
+    padding: 1rem;
+}
+
 /* HEADER STYLES */
 
 nav {
@@ -155,8 +160,13 @@ li {
     color: #14213d;
 }
 
-.item-overlay h3 {
+.item-overlay h2 {
+    padding: 0;
     border-bottom: 2px solid #fca311;
+}
+
+.item-overlay p {
+    padding-top: 2%;
 }
 
 .item-overlay:hover {
@@ -179,4 +189,42 @@ footer p {
 
 footer span {
     color: #fca311;
+}
+
+/* MEDIA QUERIES */
+
+@media (max-width: 880px) {
+    li {
+    width: calc(50% - 4%);
+    }
+}
+
+@media (max-width: 450px) {
+
+    .wrapper {
+        width: 95%;
+    }
+
+    ul {
+        flex-direction: column;
+    }
+
+    li {
+        width: 100%;
+    }
+
+    .item-overlay:hover {
+        opacity: 1;
+        top: 0;
+        left: 0;
+    }
+
+    footer {
+        padding-bottom: 2%;
+    }
+
+    footer p {
+        margin: 0.35%;
+        font-size: 1.4rem;
+    }
 }
