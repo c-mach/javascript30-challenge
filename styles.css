@@ -128,7 +128,7 @@ ul {
 }
 
 li {
-    width: calc(33% - 4%);
+    width: calc(33.33% - 4%);
     margin: 4% 2% 0 2%;
     color:rgb(59, 55, 55);
 }
@@ -140,8 +140,11 @@ li {
     justify-content: center;
     align-items: center;
     position: relative;
-    height: max-content;
+    max-height: 150px;
+}
 
+.image-container {
+    overflow: hidden;
 }
 
 .item-overlay {
@@ -158,6 +161,7 @@ li {
     transition: all 0.5s ease;
     opacity: 0;
     color: #14213d;
+    text-align: center;
 }
 
 .item-overlay h2 {
