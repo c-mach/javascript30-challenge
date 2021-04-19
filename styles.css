@@ -215,6 +215,7 @@ footer span {
 
     li {
         width: 100%;
+        margin: 1% auto;
     }
 
     .item-overlay:hover {
