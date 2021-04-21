@@ -112,8 +112,8 @@ h1::after {
     position: absolute;
     z-index: -1;
     width: 96%;
-    height: 13px;
-    background: rgba(252, 162, 17, 0.588);
+    height: 10px;
+    background: rgba(252, 162, 17, 0.8);
     bottom: 0;
     left: 0;
 }
@@ -131,6 +131,7 @@ li {
     width: calc(33.33% - 4%);
     margin: 4% 2% 0 2%;
     color:rgb(59, 55, 55);
+
 }
 
 .item-container {
