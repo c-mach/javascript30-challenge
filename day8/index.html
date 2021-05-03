@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script src="https://kit.fontawesome.com/ecede9a261.js" crossorigin="anonymous"></script>
+  <title>HTML5 Canvas</title>
+</head>
+<style>
+  html,
+  body {
+    margin: 0;
+    overflow: hidden;
+  }
+
+  body {
+    background: black;
+    font-family: monospace;
+    text-transform: uppercase;
+  }
+
+  nav {
+    padding-top: 1%;
+    padding-left: 2%;
+    display: flex;
+    align-items: center;
+  }
+  
+  nav a {
+    font-size: 3rem;
+    color: white;
+  }
+
+  label {
+    color: white;
+    padding: 0 1% 0 2%;
+  }
+
+  input,
+  button,
+  nav a {
+    opacity: 0.7;
+    cursor: pointer;
+  }
+
+  input:hover,
+  button:hover,
+  nav a:hover {
+    opacity: 1;
+  }
+
+  button {
+    margin-left: 2%; 
+    border-radius: 0; 
+    border: none;
+    padding: 0.3% 1.6%;
+  }
+
+
+
+  .slider {
+    appearance: none;
+    background: white;
+    height: 5px;
+  }
+
+  .slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #5e5d5c;
+    cursor: pointer;
+  }
+
+
+</style>
+<body>
+  <nav>
+    <a href="../index.html"><i class="fas fa-arrow-left" aria-hidden="true" title="Return to home page"></i></a>
+
+    <label for="color">Color:</label>
+    <input class="color-wheel" id="color" name="color" type="color" value="#ffffff">
+
+    <label for="size">Size:</label>
+    <input class="slider" type="range" id="size" name="size" min="1" max="50" value="5">
+
+    <button id="reset" aria-label="Reset Canvas"><i class="fas fa-trash"></i></button>
+  </nav>
+
+<canvas id="draw" width="800" height="800"></canvas>
+
+<script>
+  const color = document.querySelector('#color');
+  const size = document.querySelector('#size');
+  const reset = document.querySelector('#reset');
+  
+  const canvas = document.querySelector('#draw');
+  const ctx = canvas.getContext('2d');
+  
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  ctx.strokeStyle = '#FFF';
+  ctx.lineJoin = 'round';
+  ctx.lineCap = 'round';
+  ctx.lineWidth = 5;
+
+  let isDrawing = false;
+  let lastX = 0;
+  let lastY = 0;
+
+  function userColor(e) {
+    ctx.strokeStyle = (e.target.value);
+    console.log(e);
+  }
+
+  function userSize(e) {
+    ctx.lineWidth = (e.target.value);
+  }
+
+  function draw (e) {
+    if (!isDrawing) return;
+    
+    ctx.beginPath();
+    ctx.moveTo(lastX, lastY);
+    ctx.lineTo(e.offsetX, e.offsetY);
+    ctx.stroke();
+    [ lastX, lastY ] = [ e.offsetX, e.offsetY ];
+  }
+  
+  reset.addEventListener('click', () => location.reload(true));  
+  color.addEventListener('change', userColor);
+  size.addEventListener('change', userSize);
+
+  canvas.addEventListener('mousedown', (e) => {
+    isDrawing = true;
+    [lastX, lastY] = [e.offsetX, e.offsetY];
+  });
+  
+  canvas.addEventListener('mousemove', draw);
+  canvas.addEventListener('mouseup', () => {isDrawing = false});
+  canvas.addEventListener('mouseout', () => {isDrawing = false});
+
+</script>
+</body>
+</html>
