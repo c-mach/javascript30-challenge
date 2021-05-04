@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script src="https://kit.fontawesome.com/ecede9a261.js" crossorigin="anonymous"></script>
+  <title>Key Detection</title>
+  <script type="text/javascript" src="https://www.cornify.com/js/cornify.js"></script>
+</head>
+<style>
+
+  body {
+    background: black;
+    color:#FF00FF;
+    font-family: monospace;
+    text-transform: uppercase;
+  }
+
+  nav a {
+    background-color: transparent;
+    border: 1px solid transparent;
+    font-size: 3rem;
+    color:#FF00FF;
+  }
+
+  nav a:hover,
+  nav a:focus {
+    color: #f1f1f1;
+  }
+
+  .text {
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+</style>
+<body>
+  <nav>
+    <a href="../index.html"><i class="fas fa-arrow-left" aria-hidden="true" title="Return to home page"></i></a>
+  </nav>
+
+  <div class='text'>
+    <p>Enter the Konami Code</p>
+  </div>
+
+
+
+  <script>
+    
+    
+    const secretCode = 'ArrowUpArrowUpArrowDownArrowDownArrowLeftArrowRightArrowLeftArrowRightba';
+    let pressed = [];
+    
+    window.addEventListener('keyup', (e) => {
+      console.log(e.key)
+      pressed.push(e.key);
+      pressed.splice(-secretCode.length - 1, pressed.length - secretCode);
+      if (pressed.join('').includes(secretCode)) {
+        cornify_add();
+        pressed = [];
+      }
+
+      console.log(pressed);
+    })
+  </script>
+</body>
+</html>
