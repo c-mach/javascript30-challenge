@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script src="https://kit.fontawesome.com/ecede9a261.js" crossorigin="anonymous"></script>
+  <title>JS Reference VS Copy</title>
+</head>
+
+<style>
+  body {
+    background-color:  #1E1F30;
+    color: white;
+    font-family: monospace;
+    text-transform: uppercase;
+  }
+
+  nav {
+    padding: 1%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  nav a {
+    flex: 1;
+    text-transform: uppercase;
+    background-color: transparent;
+    border: 1px solid transparent;
+    font-size: 3rem;
+    color: white;
+
+  }
+  
+  nav a:hover,
+  nav a:focus {
+    color: #fb895c;
+  }
+
+  nav p {
+    flex: 1;
+    text-align:center;
+    line-height: 28px;
+  }
+
+  nav p:nth-child(2){
+    color: #bff593;
+  }
+
+  main img {
+    object-position: 0 -3px;
+  }
+
+
+</style>
+<body>
+  <nav>
+    <a href="../index.html"><i class="fas fa-arrow-left" aria-hidden="true" title="Return to home page"></i></a>
+    <p>references vs copying</p>
+    <p>check out the console 👀</p>
+  </nav>
+  
+  <main>
+    <img src="./assets/data.png" alt="Screen shot of data from my vs code">
+  </main>
+
+  <script>
+    console.log('%c👋 Hello!', 'font-size: 25px;')
+    console.log('%cUnderstanding JavaScript References VS Copying', 'font-size: 15px;')
+    // start with strings, numbers and booleans
+    let age = 100;
+    let age2 = age;
+    console.log(age, age2); // 100 100
+    age = 200;
+    console.log(age, age2, 'Does not change the reference'); // 200 100
+
+    let name = 'Carm';
+    let name2 = name;
+    console.log(name, name2); // Carm Carm
+    name = 'Carman';
+    console.log(name, name2, 'Does not change the reference'); // Carman Carm
+
+    // Let's say we have an array
+    const players = ['Carm', 'Tash', 'Penny'];
+
+    // and we want to make a copy of it.
+    const team = players;
+    console.log(players, 'Original Array')
+    // You might think we can just do something like this:
+    team[2] = 'Dog'; // also updates reference aka original array
+    console.log(team, 'Team is just a reference to players - it will update the reference! NOT copying and changes the original array!')
+
+    players[2] = 'Penny';
+    // however what happens when we update that array?
+
+    // now here is the problem!
+
+    // oh no - we have edited the original array too!
+
+    // Why? It's because that is an array reference, not an array copy. They both point to the same array!
+
+    // So, how do we fix this? We take a copy instead!
+    const team2 = players.slice();
+    console.log(team2, 'slice() with an empty argument makes a copy of OG array')
+    
+    // one way
+    
+    // or create a new array and concat the old one in
+    const team3 = [].concat(players);
+    console.log(team3, '[].concat(original array) will make a copy');
+
+
+    // or use the new ES6 Spread
+    const team4 = [...players];
+    console.log(team4, '[...original array] using the ES6 spread to copy');
+
+    const team5 = Array.from(players);
+    console.log(team5, 'Array.from(original array) another method of copying an array')
+
+    // now when we update it, the original one isn't changed
+
+    // The same thing goes for objects, let's say we have a person object
+
+    // with Objects
+    const person = {
+      name: 'Carman Mach',
+      age: 80
+    };
+
+    console.log(person, 'original object');
+
+    // and think we make a copy:
+    const captain = person;
+    captain.number = 99;
+
+    console.log(captain, 'changes the reference and does not make a copy')
+
+    delete person.number;
+
+    // how do we take a copy instead?
+    const cap2 = Object.assign({}, person, { number: 99, age: 12 });
+    console.log(cap2, 'Object.assign() takes an empty array, original obj and new key value pairs')
+
+    // Object ...spread
+    const cap3 = {...person};
+    console.log(cap3, 'ES6 spread operator plucks each value out and inserts into a new obj')
+
+    console.log(person, 'original obj')
+
+    // Things to note - this is only 1 level deep - both for Arrays and Objects. lodash has a cloneDeep method, but you should think twice before using it.
+
+    const carm = {
+      name: 'Carm',
+      age: 100,
+      social: {
+        twitter: '@carmanmach',
+        facebook: 'none'
+      }
+    }
+
+    const dev = Object.assign({}, carm);
+    
+    console.warn('These methods only copy 1 level deep for both Arrays and Objects. Meaning if there\'s a nested array or object, it will change the reference. To remedy this you can use the cloneDeep method.')
+
+    const dev2 = JSON.parse(JSON.stringify(carm));
+    console.log(dev2, 'JSON.parse(JSON.stringify(original obj) is a "cheat" way to clone deep. JSON.stringify converts the obj into strings and then we immediately parse it into a JSON format.')
+
+  </script>
+
+</body>
+</html>
