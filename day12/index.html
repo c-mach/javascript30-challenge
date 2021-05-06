@@ -27,41 +27,53 @@
     color: #f1f1f1;
   }
 
+  p:nth-child(2) {
+    font-size: 1.5rem; 
+  }
+
   .text {
     height: 80vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
   }
-  
+
+  .hide {
+    visibility: hidden;
+  }
+
 </style>
 <body>
   <nav>
     <a href="../index.html"><i class="fas fa-arrow-left" aria-hidden="true" title="Return to home page"></i></a>
   </nav>
 
-  <div class='text'>
+  <main class='text'>
     <p>Enter the Konami Code</p>
-  </div>
+    <p class='hide'><i class="fas fa-arrow-up"></i> <i class="fas fa-arrow-up"></i> <i class="fas fa-arrow-down"></i> <i class="fas fa-arrow-down"></i> <i class="fas fa-arrow-left"></i> <i class="fas fa-arrow-right"></i> <i class="fas fa-arrow-left"></i> <i class="fas fa-arrow-right"></i> b a</p>
+  </main>
 
 
 
   <script>
     
+    const pElem = document.querySelector('p');
+    const hint = document.querySelector('.hide');
+
+    pElem.addEventListener('mouseenter', () => hint.classList.remove('hide'));
+    pElem.addEventListener('mouseleave', () => hint.classList.add('hide'));
     
     const secretCode = 'ArrowUpArrowUpArrowDownArrowDownArrowLeftArrowRightArrowLeftArrowRightba';
     let pressed = [];
     
     window.addEventListener('keyup', (e) => {
-      console.log(e.key)
       pressed.push(e.key);
       pressed.splice(-secretCode.length - 1, pressed.length - secretCode);
       if (pressed.join('').includes(secretCode)) {
         cornify_add();
         pressed = [];
       }
-
-      console.log(pressed);
     })
   </script>
 </body>
