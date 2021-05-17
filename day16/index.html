@@ -8,6 +8,12 @@
   <title>Mouse Shadow</title>
 </head>
 <style>
+
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
   html {
     font-size: 62.5%;
     color: black;
@@ -15,11 +21,33 @@
   }
 
   body {
+    min-height: calc(100vh - 2%);
     margin: 0;
+    overflow: hidden;
   }
 
+  nav {
+    height: 5vh;
+    padding: 2% 0 0 2%;
+  }
+
+  nav a {
+    background-color: transparent;
+    border: 1px solid transparent;
+    font-size: 3rem;
+    color: black;
+  }
+
+  nav a:hover,
+  nav a:focus {
+    text-shadow: 
+      3px 3px 0 rgb(255,0,147),
+      6px 6px 0 rgb(82, 177, 209),
+      9px 9px 0 rgb(252, 255, 0)
+    ;
+  }
   .hero {
-    min-height: 100vh;
+    height: 92vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -33,6 +61,9 @@
   }
 </style>
 <body>
+  <nav>
+    <a href="../index.html"><i class="fas fa-arrow-left" aria-hidden="true" title="Return to home page"></i></a>
+  </nav>
 
   <div class="hero">
     <h1 contenteditable>QE</h1>
