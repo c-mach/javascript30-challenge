@@ -2,16 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/ecede9a261.js" crossorigin="anonymous"></script>
   <title>Mouse Shadow</title>
 </head>
-<body>
-
-  <div class="hero">
-    <h1 contenteditable>🔥WOAH!</h1>
-  </div>
-
-  <style>
+<style>
   html {
+    font-size: 62.5%;
     color: black;
     font-family: sans-serif;
   }
@@ -29,15 +27,23 @@
   }
 
   h1 {
-    text-shadow: 10px 10px 0 rgba(0,0,0,1);
-    font-size: 100px;
+    text-shadow: 0px 0px 0 rgba(0, 0, 0, 1);
+    font-size: 20rem;
+    font-weight: 400;
   }
-  </style>
+</style>
+<body>
+
+  <div class="hero">
+    <h1 contenteditable>QE</h1>
+  </div>
+
+  
 
 <script>
   const hero = document.querySelector('.hero');
   const text = hero.querySelector('h1');
-  const walk = 20;
+  const walk = 30;
 
   function shadow(e) {
     const { offsetWidth: width, offsetHeight: height } = hero;
